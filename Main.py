@@ -12,19 +12,45 @@ def insert(root, new_value) -> BinaryTreeNode:
         Finally, return the root.
         """
     # Write your code here
-
+    if root == 0:
+        new_node=BinaryTreeNode(data)
+        root = new_node
+        return root
+    elif root!=0 and new_value<root.data:
+        root.left_child = new_node
+        insert(root.left_child)
+    elif root!=0 and new_value>root.data:
+        root.right_child = new_node
+        insert(root.right_child 
+        
+    
 
 def inorder(root) -> None:
     # Write your code here
-
+    if root == 0:
+        return
+    else:
+        inorder(root.left_child)
+        print(root.data)
+        inorder(root.right_child)
 
 def preorder(root) -> None:
     # Write your code here
-
+    if root == 0:
+        return
+    else:
+        print(root.data)
+        preorder(root.left_child)
+        preorder(root.right_child)
 
 def postorder(root) -> None:
     # Write your code here
-
+    if root == 0:
+        return
+    else:
+        preorder(root.left_child)
+        preorder(root.right_child)
+        print(root.data)
 
 # Do not change the following code
 input_data = input()
