@@ -1,8 +1,8 @@
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
-        self.left_child = None
-        self.right_child = None
+        self.left = None
+        self.right = None
 
 
 def insert(root, new_value) -> BinaryTreeNode:
@@ -12,45 +12,35 @@ def insert(root, new_value) -> BinaryTreeNode:
         Finally, return the root.
         """
     # Write your code here
-    if root == 0:
-        new_node=BinaryTreeNode(data)
-        root = new_node
-        return root
-    elif root!=0 and new_value<root.data:
-        root.left_child = new_node
-        insert(root.left_child)
-    elif root!=0 and new_value>root.data:
-        root.right_child = new_node
-        insert(root.right_child 
-        
-    
+    if root == None:
+        root = BinaryTreeNode(new_value)
+    elif new_value < root.data:
+        root.left = insert(root.left, new_value)
+    else: #new_value >= root.data:
+        root.right = insert(root.right, new_value)
+    return root        
+
 
 def inorder(root) -> None:
-    # Write your code here
-    if root == 0:
-        return
-    else:
-        inorder(root.left_child)
-        print(root.data)
-        inorder(root.right_child)
+    if root: 
+        inorder(root.left)
+        print(root.data, end = " ")
+        inorder(root.right)
+
 
 def preorder(root) -> None:
-    # Write your code here
-    if root == 0:
-        return
-    else:
-        print(root.data)
-        preorder(root.left_child)
-        preorder(root.right_child)
+    if root:
+        print(root.data, end = " ")
+        preorder(root.left)
+        preorder(root.right)
+
 
 def postorder(root) -> None:
-    # Write your code here
-    if root == 0:
-        return
-    else:
-        preorder(root.left_child)
-        preorder(root.right_child)
-        print(root.data)
+    if root:
+        postorder(root.left)
+        postorder(root.right)
+        print(root.data, end = " ")
+
 
 # Do not change the following code
 input_data = input()
